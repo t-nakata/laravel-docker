@@ -19,12 +19,19 @@
 │       ├── Dockerfile
 │       └── php.ini
 ├── docker-compose.yml
-└── server #このディレクトリがホスティングされる
+├── server #このディレクトリがホスティングされる
+└── server2 #このディレクトリがホスティングされる
+
 </pre>
 
 ## 起動前準備
 ### Laravelプロジェクトを追加する
 `./server/` に Laravelプロジェクト作成する、または、シンボリックリンクを作成する
+```
+# 作業ディレクトリはCloneしてきたプロジェクトのルートを想定
+# シンボリックリンクを作成知る際には元のserverディレクトリは削除してください
+ln -s [リンク先のProjectのpath] server
+```
 
 ### .envのDB設定
 ```
@@ -47,3 +54,6 @@ phpコンテナへログインすることができる。
 ### Mysqlコンテナにログインする
 `docker-compose exec db bash` の後に `mysql -uroot -phogehoge`もしくは
 通常通り `mysql -uroot -phogehoge` を実行
+
+### 複数のプロジェクトを同時にホスティングできるように修正
+http://localhost:8080 にアクセスすると server2内のlaravelプロジェクトをホスティングできる
