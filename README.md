@@ -44,7 +44,7 @@ DB_PASSWORD=hogehoge
 ```   
 ## Docker起動
 `docker-compose up` これで少し待つとホスティングが開始されます。
-ブラウザにて http://localhost にアクセスするとLaravelへアクセスできます。
+ブラウザにて http://localhost:8081 にアクセスするとLaravelへアクセスできます。
 
 ### migrateを行う
 ルートディレクトリにて `docker-compose exec php bash` を実行することで
@@ -56,4 +56,13 @@ phpコンテナへログインすることができる。
 通常通り `mysql -uroot -phogehoge` を実行
 
 ### 複数のプロジェクトを同時にホスティングできるように修正
-http://localhost:8080 にアクセスすると server2内のlaravelプロジェクトをホスティングできる
+http://localhost:8082 にアクセスすると server2内のlaravelプロジェクトをホスティングできる
+
+
+### ホスティング一覧
+- server
+    - test_db
+    - http://localhost:8081
+- server2
+    - test_db2
+    - http://localhost:8082

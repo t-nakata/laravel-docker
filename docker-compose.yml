@@ -17,8 +17,8 @@ services:
     image: nginx
     container_name: nginx
     ports:
-      - 80:80
-      - 8080:8080
+      - 8081:8081
+      - 8082:8082
     volumes:
       - ./server:/var/www
       - ./server2:/var/www2
@@ -41,18 +41,3 @@ services:
       - ./docker/db/sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
-
-  db2:
-    image: mysql:5.7
-    container_name: db2
-    environment:
-      MYSQL_ROOT_PASSWORD: hogehoge
-      MYSQL_DATABASE: test_db2
-      TZ: 'Asia/Tokyo'
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ./docker/db2/data:/var/lib/mysql
-      - ./docker/db2/my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./docker/db2/sql:/docker-entrypoint-initdb.d
-    ports:
-      - 13306:3306
